@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home Alone Pet</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <div class="dog-image" id="dogImage"></div>
+	
+
+    <div class="toggle-wrapper">
+      <label class="switch">
+        <input type="checkbox" id="statusToggle" />
+        <span class="slider"></span>
+      </label>
+      <div class="toggle-labels">
+        <span>Away</span>
+        <span>At home</span>
+      </div>
+    </div>
+	<p id="alertMessage" style="color: red; font-weight: bold;"></p>
+	<p id="timeRemaining" style="color: #555; font-size: 14px;"></p>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
