@@ -1,63 +1,127 @@
-const toggle = document.getElementById("statusToggle");
-const body = document.body;
-const dog = document.getElementById("dogImage");
-const alertMessage = document.getElementById("alertMessage");
-const timeRemaining = document.getElementById("timeRemaining");
-
-function setStatus(status) {
-  if (status === "away") {
-    body.style.backgroundColor = "#ffcccc"; // red
-    dog.style.backgroundImage = "url('sad-dog.png')";
-    toggle.checked = false;
-    localStorage.setItem("leaveTime", Date.now());
-    timeRemaining.style.display = "block";
-  } else {
-    body.style.backgroundColor = "#ccffcc"; // green
-    dog.style.backgroundImage = "url('happy-dog.png')";
-    toggle.checked = true;
-    alertMessage.innerText = "";
-    timeRemaining.innerText = "";
-    timeRemaining.style.display = "none";
-  }
-
-  localStorage.setItem("homeStatus", status);
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background-color: #ccffcc; /* default green */
+  transition: background-color 0.3s ease;
 }
 
-toggle.addEventListener("change", () => {
-  if (toggle.checked) {
-    setStatus("home");
-  } else {
-    setStatus("away");
-  }
-});
-
-window.onload = function () {
-  const saved = localStorage.getItem("homeStatus") || "home";
-  setStatus(saved);
-};
-
-function checkTimeLimit() {
-  const status = localStorage.getItem("homeStatus");
-  const leaveTime = parseInt(localStorage.getItem("leaveTime") || "0");
-
-  if (status === "away") {
-    const now = Date.now();
-    const diffMs = now - leaveTime;
-    const diffMin = Math.floor(diffMs / (1000 * 60));
-    const minsLeft = 1 - diffMin;
-
-    if (minsLeft <= 0) {
-      alertMessage.innerText = "⏰ Time limit reached! Please check in.";
-      timeRemaining.innerText = "";
-    } else {
-      alertMessage.innerText = "";
-      timeRemaining.innerText = `${minsLeft} min`;
-    }
-  } else {
-    alertMessage.innerText = "";
-    timeRemaining.innerText = "";
-  }
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  padding-top: 60px;
 }
 
-setInterval(checkTimeLimit, 1000);
-checkTimeLimit();
+.dog-image {
+  width: 200px;
+  height: 200px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-bottom: 40px;
+}
+
+.toggle-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 80px;
+  height: 40px;
+  margin-bottom: 8px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  background-color: #ccc;
+  border-radius: 34px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 32px;
+  width: 32px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  border-radius: 50%;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #4caf50;
+}
+
+input:checked + .slider:before {
+  transform: translateX(40px);
+}
+
+.toggle-labels {
+  display: flex;
+  justify-content: space-between;
+  width: 120px;
+  font-size: 16px;
+  margin-top: 5px;
+}
+
+#alertMessage {
+  height: 20px;
+  font-weight: bold;
+  color: red;
+  margin-top: 16px;
+  text-align: center;
+}
+
+#timeRemaining {
+  font-size: 14px;
+  color: #555;
+  margin-top: 8px;
+  height: 20px;
+  text-align: center;
+}
+
+/* Адаптивность для телефонов */
+@media (max-width: 480px) {
+  .dog-image {
+    width: 150px;
+    height: 150px;
+  }
+
+  .switch {
+    width: 70px;
+    height: 34px;
+  }
+
+  .slider:before {
+    width: 26px;
+    height: 26px;
+  }
+
+  input:checked + .slider:before {
+    transform: translateX(36px);
+  }
+
+  .toggle-labels {
+    width: 100px;
+    font-size
