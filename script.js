@@ -45,7 +45,7 @@ function sendPushNotification() {
     body: JSON.stringify({
       app_id: "6fb0b6cf-9734-41ae-8aec-5675f3e18898",
       included_segments: ["Subscribed Users"],
-      headings: { en: "🐾 Your pet is waiting..." },
+      headings: { en: "🐾 Time to check in" },
       contents: { en: "You haven't confirmed you're back. Please check in!" },
       url: "https://klyaksonchikcripta.github.io/homealonepet/"
     })
@@ -59,10 +59,10 @@ function checkTimeLimit() {
 
   if (status === "away") {
     const now = Date.now();
-    const diffHours = (now - leaveTime) / (1000 * 60 * 60);
-    const hoursLeft = 24 - diffHours;
+    const diffMinutes = (now - leaveTime) / (1000 * 60);
+    const minutesLeft = 1 - diffMinutes;
 
-    if (hoursLeft <= 0) {
+    if (minutesLeft <= 0) {
       alertMessage.innerText = "⏰ Time limit reached! Please check in.";
 
       if (!alertSent) {
@@ -73,9 +73,7 @@ function checkTimeLimit() {
       timeRemaining.innerText = "";
     } else {
       alertMessage.innerText = "";
-      const hrs = Math.floor(hoursLeft);
-      const mins = Math.floor((hoursLeft - hrs) * 60);
-      timeRemaining.innerText = `${hrs}h ${mins}min`;
+      timeRemaining.innerText = `${Math.max(0, Math.floor(minutesLeft))} min`;
     }
   } else {
     alertMessage.innerText = "";
