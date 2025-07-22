@@ -1,9 +1,10 @@
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  margin: 0;
   font-family: sans-serif;
   background-color: #ccffcc;
   min-height: 100vh;
@@ -11,20 +12,21 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  transition: background-color 0.4s ease;
   padding-top: 60px;
+  transition: background-color 0.4s ease;
 }
 
-.dog-image {
+/* Собака (фон-картинка) */
+#dogImage {
   width: 200px;
   height: 200px;
   background-size: contain;
   background-repeat: no-repeat;
-  background-position: center;
-  margin-bottom: 40px;
+  background-position: center center;
+  margin: 0 auto 40px auto;
 }
 
-/* Toggle switch */
+/* Переключатель */
 .toggle-wrapper {
   display: flex;
   flex-direction: column;
@@ -32,6 +34,7 @@ body {
   margin-bottom: 16px;
 }
 
+/* Стандартный toggle */
 .switch {
   position: relative;
   display: inline-block;
@@ -48,31 +51,36 @@ body {
 .slider {
   position: absolute;
   cursor: pointer;
-  top: 0; left: 0;
-  right: 0; bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background-color: #ccc;
-  transition: .4s;
+  transition: 0.4s;
   border-radius: 34px;
 }
 
 .slider:before {
   position: absolute;
   content: "";
-  height: 26px; width: 26px;
-  left: 4px; bottom: 4px;
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
   background-color: white;
-  transition: .4s;
+  transition: 0.4s;
   border-radius: 50%;
 }
 
 input:checked + .slider {
-  background-color: #4CAF50;
+  background-color: #4caf50;
 }
 
 input:checked + .slider:before {
   transform: translateX(36px);
 }
 
+/* Подписи под тумблером */
 .toggle-labels {
   display: flex;
   justify-content: space-between;
@@ -82,19 +90,24 @@ input:checked + .slider:before {
   color: #444;
 }
 
+/* Таймер */
+#timeRemaining {
+  color: #555;
+  font-size: 14px;
+  margin-top: 16px;
+  text-align: center;
+  min-height: 20px;
+}
+
+/* Тревога */
 #alertMessage {
-  height: 20px; /* фиксированная высота */
+  height: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
   color: red;
   font-weight: bold;
   margin-top: 12px;
-}
-
-#timeRemaining {
-  color: #555;
-  font-size: 14px;
-  margin-top: 4px;
- text-align: center;
+  min-height: 20px;
+  text-align: center;
 }
