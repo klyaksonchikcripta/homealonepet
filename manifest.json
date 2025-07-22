@@ -1,6 +1,6 @@
 {
   "name": "Home Alone Pet",
-  "short_name": "Pet Alert",
+  "short_name": "HomeAlonePet",
   "start_url": "/homealonepet/",
   "display": "standalone",
   "background_color": "#ffffff",
