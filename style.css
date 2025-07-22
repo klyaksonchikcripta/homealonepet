@@ -83,6 +83,10 @@ input:checked + .slider:before {
 }
 
 #alertMessage {
+  height: 20px; /* фиксированная высота */
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: red;
   font-weight: bold;
   margin-top: 12px;
