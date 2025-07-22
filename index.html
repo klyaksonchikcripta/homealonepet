@@ -4,7 +4,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Home Alone Pet</title>
+
+  <!-- Styles -->
   <link rel="stylesheet" href="style.css" />
+
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="manifest.json" />
+
+  <!-- iOS specific -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-title" content="Home Alone Pet" />
+  <link rel="apple-touch-icon" href="icon.png" />
 
   <!-- OneSignal SDK -->
   <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async></script>
@@ -28,6 +38,7 @@
     <p id="alertMessage" style="color: red; font-weight: bold;"></p>
   </div>
 
+  <!-- Scripts -->
   <script src="script.js"></script>
   <script src="onesignal.js"></script>
 </body>
