@@ -5,11 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Home Alone Pet</title>
   <link rel="stylesheet" href="style.css" />
+
+  <!-- OneSignal SDK -->
+  <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async></script>
 </head>
 <body>
   <div class="app">
     <div class="dog-image" id="dogImage"></div>
-	
 
     <div class="toggle-wrapper">
       <label class="switch">
@@ -21,10 +23,12 @@
         <span>At home</span>
       </div>
     </div>
-	<p id="alertMessage" style="color: red; font-weight: bold;"></p>
-	<p id="timeRemaining" style="color: #555; font-size: 14px;"></p>
+
+    <p id="timeRemaining" style="color: #555; font-size: 14px;"></p>
+    <p id="alertMessage" style="color: red; font-weight: bold;"></p>
   </div>
 
   <script src="script.js"></script>
+  <script src="onesignal.js"></script>
 </body>
 </html>
