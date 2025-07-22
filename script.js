@@ -6,13 +6,13 @@ const timeRemaining = document.getElementById("timeRemaining");
 
 function setStatus(status) {
   if (status === "away") {
-    body.style.backgroundColor = "#ffcccc";
+    body.style.backgroundColor = "#ffcccc"; // red
     dog.style.backgroundImage = "url('sad-dog.png')";
     toggle.checked = false;
     localStorage.setItem("leaveTime", Date.now());
     localStorage.setItem("alertSent", "false");
   } else {
-    body.style.backgroundColor = "#ccffcc";
+    body.style.backgroundColor = "#ccffcc"; // green
     dog.style.backgroundImage = "url('happy-dog.png')";
     toggle.checked = true;
     localStorage.removeItem("leaveTime");
@@ -40,10 +40,10 @@ function sendPushNotification() {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `Basic ${ONE_SIGNAL_KEY}`
+      "Authorization": `Basic ${ONESIGNAL_REST_KEY}`
     },
     body: JSON.stringify({
-      app_id: ONE_SIGNAL_APP_ID,
+      app_id: "6fb0b6cf-9734-41ae-8aec-5675f3e18898",
       included_segments: ["Subscribed Users"],
       headings: { en: "🐾 Your pet is waiting..." },
       contents: { en: "You haven't confirmed you're back. Please check in!" },
